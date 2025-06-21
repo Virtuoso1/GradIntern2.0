@@ -23,7 +23,7 @@
     <div class="hero-overlay">
     <h1>Find Your Internship</h1>
     <p>Discover exciting internship opportunities tailored for recent graduates.</p>
-    <a id="bin" class="btn" href="student/student_signup.php">Get Started</a>
+    <a id="bin" class="btn" href="student/student-signup.php">Get Started</a>
 
     
   </div>

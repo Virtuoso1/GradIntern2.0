@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Create Internship</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
   <div class="container">
