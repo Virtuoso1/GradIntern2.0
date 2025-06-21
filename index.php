@@ -1,3 +1,52 @@
+<?php
+session_start();
+include 'dbconn.php';
+
+if (isset($_SESSION['student_id'])) {
+    header("Location: student/s-dashboard.php");
+    exit();
+}
+
+if (isset($_COOKIE['student_email'])) {
+  $email = $_COOKIE['student_email'];
+  $stmt = $conn->prepare("SELECT id FROM student WHERE email = ?");
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $stmt->store_result();
+
+  if ($stmt->num_rows > 0) {
+    $stmt->bind_result($id, $name);
+      $stmt->fetch();
+      $_SESSION['student_id'] = $id;
+      $_SESSION['student_name'] = $name;
+    header("Location: student/s-dashboard.php");
+    exit();}
+    $stmt->close();
+}
+
+if (isset($_SESSION['recruiter_id'])) {
+    header("Location: recruiter/r_dashboard.php");
+    exit();
+}
+
+if (isset($_COOKIE['recruiter_email'])) {
+  $email = $_COOKIE['recruiter_email'];
+  $stmt = $conn->prepare("SELECT id FROM recruiter WHERE email = ?");
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $stmt->store_result();
+
+  if ($stmt->num_rows > 0) {
+    $stmt->bind_result($id, $name);
+      $stmt->fetch();
+      $_SESSION['recruiter_id'] = $id;
+      $_SESSION['recruiter_name'] = $name;
+    header("Location: recruiter/r_dashboard.php");
+    exit();}
+    $stmt->close();
+  }
+  $conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
