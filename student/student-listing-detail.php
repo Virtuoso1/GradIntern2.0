@@ -1,10 +1,32 @@
+<?php
+$conn = new mysqli("127.0.0.1:3307", "root", "1604", "grad");
+
+if(isset($_GET['id'])) {
+  $id = intval($_GET['id']);
+  //echo "ID from URL: $id<br>";
+  $stmt = $conn->prepare("SELECT * FROM internship WHERE id = ?");
+  $stmt->bind_param("i", $id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $internship = $result->fetch_assoc();
+  if (!$internship) {
+    echo "No internship found with ID $id";
+    exit;
+}
+
+} else {
+  echo "No listing selected.";
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Internship Detail - GradIntern</title>
-  <link rel="stylesheet" href="../static/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?php echo $internship['title']; ?> - Internship Details</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
@@ -12,12 +34,22 @@
   </header>
 
   <main class="detail-page">
-    <h2>Software Engineering Intern</h2>
-    <p><strong>Company:</strong> TechCorp</p>
-    <p><strong>Location:</strong> New York</p>
-    <p><strong>Description:</strong> Work with our dev team to build and deploy web apps.</p>
-    <p><strong>Requirements:</strong> JavaScript, HTML, CSS</p>
-    <a href="#" class="btn btn-secondary">Apply Now</a>
+    <h2><?php echo $internship['title']; ?></h2>
+    <p><strong>Location:</strong> <?php echo $internship['location']; ?></p>
+    <p><strong>Description:</strong> <?php echo $internship['internship_description']; ?></p>
+    <p><strong>Skills Required:</strong> <?php echo $internship['skills_required']; ?></p>
+    <p><strong>Stipend:</strong> <?php echo $internship['stipend']; ?></p>
+    <p><strong>Posted Date:</strong> <?php echo $internship['posted_date']; ?></p>
+    <p><strong>Recruiter ID:</strong> <?php echo $internship['recruiter_id']; ?></p>
+
+
+    <form action="apply.php" method="post">
+      <input type="hidden" name="internship_id" value="<?php echo $internship['id']; ?>">
+      <input type="text" name="student_name" placeholder="Your Name" required><br>
+      <input type="email" name="student_email" placeholder="Your Email" required><br>
+      <textarea name="cover_letter" placeholder="Why should we choose you?" required></textarea><br>
+      <button type="submit" class="btn btn-secondary">Apply Now</button>
+    </form>
   </main>
 
   <footer class="footer">
