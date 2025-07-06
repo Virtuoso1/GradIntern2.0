@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $student_id) {
 
     // Prepare and execute update query
     if ($cv_path) {
-        $stmt = $conn->prepare("UPDATE students SET university = ?, cv_path = ? WHERE id = ?");
+        $stmt = $conn->prepare("UPDATE student SET university = ?, cv_path = ? WHERE id = ?");
         if ($stmt) {
             $stmt->bind_param("ssi", $university, $cv_path, $student_id);
         } else {
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $student_id) {
 }
 
 // Fetch profile details
-$stmt = $conn->prepare("SELECT university, cv_path FROM students WHERE id = ?");
+$stmt = $conn->prepare("SELECT university, cv_path FROM student WHERE id = ?");
 $stmt->bind_param("i", $student_id);
 $stmt->execute();
 $stmt->bind_result($university, $cv_path);

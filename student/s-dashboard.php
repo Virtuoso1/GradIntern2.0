@@ -9,6 +9,7 @@
 <body>
   <header class="header">
     <div class="logo">GradIntern</div>
+        <a class='btn' href="s-notification.php">Updates</a>
     <a class='btn' href="logout.php">Logout</a>
   </header>
 
