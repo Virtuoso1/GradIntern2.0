@@ -1,8 +1,8 @@
 <?php
-$host = '127.0.0.1:3307';
+$host = '127.0.0.1:3308';
 $db = 'grad';
 $user = 'root';
-$pass = '1604'; // update if needed
+$pass = ''; // update if needed
 
 $conn = new mysqli($host, $user, $pass, $db);
 
