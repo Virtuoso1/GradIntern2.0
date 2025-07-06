@@ -1,6 +1,6 @@
 <?php
 $host = '127.0.0.1:3308';
-$db = 'gradintern';
+$db = 'grad';
 $user = 'root';
 $pass = ''; // update if needed
 

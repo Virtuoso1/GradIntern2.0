@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $student_id) {
 }
 
 // Fetch profile details
-$stmt = $conn->prepare("SELECT university, cv_path FROM students WHERE id = ?");
+$stmt = $conn->prepare("SELECT university, cv_path FROM student WHERE id = ?");
 $stmt->bind_param("i", $student_id);
 $stmt->execute();
 $stmt->bind_result($university, $cv_path);
