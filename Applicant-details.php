@@ -1,7 +1,7 @@
 <?php
 // Start session and include DB connection
 session_start();
-include('grad'); // replace with your database connection script
+include('dbconn.php'); // replace with your database connection script
 
 // Check if internship_id is passed
 if (!isset($_GET['internship_id'])) {
