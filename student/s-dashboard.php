@@ -67,21 +67,30 @@ $result = mysqli_query($conn, $query);
     </style>
 </head>
 <body>
+  <header class="header">
+    <div class="logo">GradIntern</div>
+        <a class='btn' href="s-notification.php">Updates</a>
+    <a class='btn' href="logout.php">Logout</a>
+  </header>
 
-<div class="container">
-    <h1>Available Internship Listings</h1>
+  <main class="listings-page">
+    <h2>Available Internships</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Software Engineering Intern</h3>
+        <p>Company: TechCorp</p>
+        <p>Location: New York</p>
+        <a href="student-listing-detail.php" class="btn">View Details</a>
+      </div>
+      <div class="card">
+        <h3>Marketing Intern</h3>
+        <p>Company: MarketMinds</p>
+        <p>Location: Remote</p>
+        <a href="student-listing-detail.php" class="btn">View Details</a>
+  </main>
 
-    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-        <div class="card">
-            <h2><?php echo htmlspecialchars($row['title']); ?></h2>
-            <p><strong>Location:</strong> <?php echo htmlspecialchars($row['location']); ?></p>
-            <p><strong>Stipend:</strong> Ksh <?php echo htmlspecialchars($row['stipend']); ?></p>
-            <p><strong>Skills Required:</strong> <?php echo htmlspecialchars($row['skills_required']); ?></p>
-            <p><strong>Description:</strong> <?php echo substr(htmlspecialchars($row['internship_description']), 0, 100) . '...'; ?></p>
-            <a href="student-listing-details.php?id=<?php echo $row['id']; ?>" class="view-btn">View Details</a>
-        </div>
-    <?php } ?>
-</div>
-
+  <footer class="footer">
+    <p>&copy; 2025 GradIntern. All rights reserved.</p>
+  </footer>
 </body>
 </html>

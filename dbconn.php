@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$password = ""; // Leave blank if you're using XAMPP default
-$database = "grad";
+$host = '127.0.0.1:3306';
+$db = 'grad';
+$user = 'root';
+$pass = ''; // update if needed
 
 $conn = mysqli_connect($host, $user, $password, $database);
 

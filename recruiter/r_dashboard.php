@@ -1,3 +1,20 @@
+<?php
+session_start();
+include '../dbconn.php';
+
+if (!isset($_SESSION['recruiter_id'])) {
+    header("Location: recruiterlogin.php");
+    exit();
+}
+
+$recruiter_id = $_SESSION['recruiter_id'];
+
+$sql = "SELECT id, title, location, stipend FROM internship WHERE recruiter_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $recruiter_id);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,23 +27,29 @@
   <header class="header">
     <div class="logo">GradIntern</div>
     <a class='btn' href="logout.php">Logout</a>
-</form>
+
 
   </header>
 
   <main class="listings-page">
     <h2>My Internship Listings</h2>
+    <a href="new-listing.php">
+    <button>Create New Listing</button>
+    </a>
     <div class="card-grid">
-      <div class="card">
-        <h3>Frontend Developer Intern</h3>
-        <p>Location: Remote</p>
-        <a href="recruiter-listing-detail.php" class="btn">View Details</a>
-      </div>
-      <div class="card">
-        <h3>Data Analyst Intern</h3>
-        <p>Location: Nairobi</p>
-        <a href="recruiter-listing-detail.php" class="btn">View Details</a>
-      </div>
+      <?php while ($row = $result->fetch_assoc()): ?>
+          <div class="card">
+            <a href="applicant-details.php?id=<?php echo $row['id']; ?>">
+              <strong><?php echo htmlspecialchars($row['title']); ?></strong> <br/>
+              <?php echo htmlspecialchars($row['location']); ?> <br/>
+              Ksh <?php echo number_format($row['stipend']); ?>
+      </a>
+              <br/><form method="POST" action="deletelisting.php" style="display:inline; float:right;" onsubmit="return confirm('Are you sure you want to delete this listing?');">
+                  <input type="hidden" name="listing_id" value="<?php echo $row['id']; ?>">
+                  <button type="submit" class="delete-btn">Delete</button>
+              </form>
+         </div> 
+      <?php endwhile; ?>
     </div>
   </main>
 

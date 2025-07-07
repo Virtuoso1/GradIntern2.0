@@ -126,7 +126,42 @@ ul {
   color: white;
   margin-top: 2rem;
 }
-
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.card:hover {
+  background-color: #f7f7f7;
+}
+.delete-btn {
+  background-color: red;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  float: right;
+  border-radius: 4px;
+}
+.application {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+.accepted {
+  background-color: #e6ffec;
+  border-left: 6px solid green;
+}
+.pending {
+  background-color: #fff9e6;
+  border-left: 6px solid orange;
+}
+.rejected {
+  background-color: #ffe6e6;
+  border-left: 6px solid red;
+}
 /* Responsive */
 @media (max-width: 768px) {
   .navbar {
