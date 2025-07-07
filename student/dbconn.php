@@ -1,12 +1,12 @@
 <?php
-$host = '127.0.0.1:3307';
-$db = 'grad';
-$user = 'root';
-$pass = '1604'; // update if needed
+$host = "localhost";
+$user = "root";
+$password = ""; // Leave blank if you're using XAMPP default
+$database = "grad";
 
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = mysqli_connect($host, $user, $password, $database);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
