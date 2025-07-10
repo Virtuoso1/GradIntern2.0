@@ -1,7 +1,7 @@
 <?php
-// Start session and include DB connection
+// Start session 
 session_start();
-include('dbconn.php'); // Replace with your actual DB connection script
+include('dbconn.php'); //DB connection
 
 // Check if internship_id is passed
 if (!isset($_GET['internship_id']) || !is_numeric($_GET['internship_id'])) {
