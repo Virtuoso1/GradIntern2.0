@@ -4,12 +4,12 @@ include "../dbconn.php";
 $result = $conn->query("SELECT * FROM internship");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Internships - GradIntern</title>
-  <link rel="stylesheet" href="../static/style.css" />
+    <title>Student Dashboard</title>
+      <link rel="stylesheet" href="../css/style.css">
+
+   
 </head>
 <body>
   <header class="header">
