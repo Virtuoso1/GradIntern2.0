@@ -1,3 +1,8 @@
+<?php
+include "../dbconn.php";
+
+$result = $conn->query("SELECT * FROM internship");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,22 +18,19 @@
     <a class='btn' href="logout.php">Logout</a>
   </header>
 
-  <main class="listings-page">
+ <main class="listings-page">
     <h2>Available Internships</h2>
-    <div class="card-grid">
+<div class="card-grid">
+    <?php while ($row = $result->fetch_assoc()): ?>
       <div class="card">
-        <h3>Software Engineering Intern</h3>
-        <p>Company: TechCorp</p>
-        <p>Location: New York</p>
-        <a href="student-listing-detail.php" class="btn">View Details</a>
-      </div>
-      <div class="card">
-        <h3>Marketing Intern</h3>
-        <p>Company: MarketMinds</p>
-        <p>Location: Remote</p>
-        <a href="student-listing-detail.php" class="btn">View Details</a>
-  </main>
+        <h3><?php echo $row['title']; ?></h3>
+        <p><strong>Location:</strong> <?php echo $row['location']; ?></p>
 
+        <a class="btn" href="student-listing-detail.php?id=<?php echo $row['id']; ?>">View Details</a>
+      </div>
+    <?php endwhile; ?>
+    </div>
+  </main>
   <footer class="footer">
     <p>&copy; 2025 GradIntern. All rights reserved.</p>
   </footer>

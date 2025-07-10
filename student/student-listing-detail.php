@@ -1,9 +1,7 @@
 <?php
-$conn = new mysqli("127.0.0.1:3307", "root", "1604", "grad");
-
+include "../dbconn.php";
 if(isset($_GET['id'])) {
   $id = intval($_GET['id']);
-  //echo "ID from URL: $id<br>";
   $stmt = $conn->prepare("SELECT * FROM internship WHERE id = ?");
   $stmt->bind_param("i", $id);
   $stmt->execute();
@@ -40,16 +38,11 @@ if(isset($_GET['id'])) {
     <p><strong>Skills Required:</strong> <?php echo $internship['skills_required']; ?></p>
     <p><strong>Stipend:</strong> <?php echo $internship['stipend']; ?></p>
     <p><strong>Posted Date:</strong> <?php echo $internship['posted_date']; ?></p>
-    <p><strong>Recruiter ID:</strong> <?php echo $internship['recruiter_id']; ?></p>
 
 
     <form action="apply.php" method="post">
-      <input type="hidden" name="internship_id" value="<?php echo $internship['id']; ?>">
-      <input type="text" name="student_name" placeholder="Your Name" required><br>
-      <input type="email" name="student_email" placeholder="Your Email" required><br>
-      <textarea name="cover_letter" placeholder="Why should we choose you?" required></textarea><br>
-      <button type="submit" class="btn btn-secondary">Apply Now</button>
-    </form>
+        <input type="hidden" name="internship_id" value="<?php echo $internship['id']; ?>">
+        <button type="submit" class="btn">Apply</button>
   </main>
 
   <footer class="footer">

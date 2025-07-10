@@ -1,12 +1,8 @@
 <?php
-$conn = new mysqli("127.0.0.1:3307", "root", "1604", "grad");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include "../dbconn.php";
 session_start();
 
+// Check login
 if (!isset($_SESSION['student_id'])) {
     echo "You must be logged in to apply.";
     exit;
@@ -14,27 +10,44 @@ if (!isset($_SESSION['student_id'])) {
 
 $student_id = $_SESSION['student_id'];
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $internship_id = intval($_POST['internship_id']);
-    $student_name = $conn->real_escape_string($_POST['student_name']);
-    $student_email = $conn->real_escape_string($_POST['student_email']);
-    $cover_letter = $conn->real_escape_string($_POST['cover_letter']);
 
-    $sql = "INSERT INTO application (internship_id, name, email, cover_letter) VALUES ($internship_id, '$student_name', '$student_email', '$cover_letter')";
+    // Check if already applied
+    $check = $conn->prepare("SELECT id FROM application WHERE student_id = ? AND internship_id = ?");
+    $check->bind_param("ii", $student_id, $internship_id);
+    $check->execute();
+    $check->store_result();
 
-    if ($conn->query($sql) === TRUE) {
+    if ($check->num_rows > 0) {
+        echo "<h3>You have already applied for this internship.</h3>";
+        echo "<a href='s-dashboard.php' class='btn btn-secondary'>Back to Listings</a>";
+        $check->close();
+        $conn->close();
+        exit;
+    }
+    $check->close();
+
+    // Insert application
+    $stmt = $conn->prepare("INSERT INTO application (student_id, internship_id) VALUES (?, ?)");
+    if (!$stmt) {
+        echo "Prepare failed: " . $conn->error;
+        exit;
+    }
+    $stmt->bind_param("ii", $student_id, $internship_id);
+
+    if ($stmt->execute()) {
         echo "<h2>Application Submitted!</h2>";
-        echo "<p>Thank you, <strong>$student_name</strong>. Your application for the internship has been submitted successfully.</p>";
-        echo "<a href='student-listings.php' class='btn btn-secondary'>Back to Listings</a>";
+        echo "<p>Your application has been submitted successfully.</p>";
+        echo "<a href='s-dashboard.php' class='btn btn-secondary'>Back to Listings</a>";
     } else {
-        echo "Error: " .$conn->error;
+        echo "Error submitting application: " . $stmt->error;
     }
 
+    $stmt->close();
 } else {
     echo "Invalid request.";
 }
+
 $conn->close();
 ?>
-
- 
