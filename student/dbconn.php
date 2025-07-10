@@ -1,5 +1,5 @@
 <?php
-$host = '127.0.0.1:3308';
+$host = '127.0.0.1:3306';
 $db = 'grad';
 $user = 'root';
 $pass = ''; // update if needed

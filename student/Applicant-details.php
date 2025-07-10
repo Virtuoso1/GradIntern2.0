@@ -1,21 +1,21 @@
 <?php
 // Start session and include DB connection
 session_start();
-include('dbconn.php'); // replace with your database connection script
+include('dbconn.php'); // Replace with your actual DB connection script
 
 // Check if internship_id is passed
-if (!isset($_GET['internship_id'])) {
-    echo "Internship ID is missing.";
+if (!isset($_GET['internship_id']) || !is_numeric($_GET['internship_id'])) {
+    echo "Internship ID is missing or invalid.";
     exit;
 }
 
 $internship_id = intval($_GET['internship_id']);
 
 // Fetch internship details
-$internship_query = $conn->prepare("SELECT title FROM internships WHERE id = ?");
-$internship_query->bind_param("i", $internship_id);
-$internship_query->execute();
-$internship_result = $internship_query->get_result();
+$internship_stmt = $conn->prepare("SELECT title FROM internship WHERE id = ?");
+$internship_stmt->bind_param("i", $internship_id);
+$internship_stmt->execute();
+$internship_result = $internship_stmt->get_result();
 
 if ($internship_result->num_rows === 0) {
     echo "Internship not found.";
@@ -24,17 +24,17 @@ if ($internship_result->num_rows === 0) {
 
 $internship = $internship_result->fetch_assoc();
 
-// Fetch applicants
-$applicants_query = $conn->prepare("
-    SELECT users.id, users.name, users.email, users.phone, applications.applied_at 
-    FROM applications 
-    INNER JOIN users ON applications.user_id = users.id 
-    WHERE applications.internship_id = ?
-    ORDER BY applications.applied_at DESC
+// Fetch student applicants
+$applicants_stmt = $conn->prepare("
+    SELECT student.id, student.s_name, student.email, student.phone_no, application.applied_at 
+    FROM application
+    INNER JOIN student ON application.student_id = student.id
+    WHERE application.internship_id = ?
+    ORDER BY application.applied_at DESC
 ");
-$applicants_query->bind_param("i", $internship_id);
-$applicants_query->execute();
-$applicants_result = $applicants_query->get_result();
+$applicants_stmt->bind_param("i", $internship_id);
+$applicants_stmt->execute();
+$applicants_result = $applicants_stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -64,30 +64,31 @@ $applicants_result = $applicants_query->get_result();
 <h2>Applicants for: <?= htmlspecialchars($internship['title']) ?></h2>
 
 <?php if ($applicants_result->num_rows > 0): ?>
-<table>
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Applied At</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php 
-        $count = 1;
-        while ($row = $applicants_result->fetch_assoc()): ?>
+    <p style="text-align:center;"><?= $applicants_result->num_rows ?> applicant(s) found.</p>
+    <table>
+        <thead>
             <tr>
-                <td><?= $count++ ?></td>
-                <td><?= htmlspecialchars($row['name']) ?></td>
-                <td><?= htmlspecialchars($row['email']) ?></td>
-                <td><?= htmlspecialchars($row['phone']) ?></td>
-                <td><?= htmlspecialchars($row['applied_at']) ?></td>
+                <th>#</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Applied At</th>
             </tr>
-        <?php endwhile; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php 
+            $count = 1;
+            while ($row = $applicants_result->fetch_assoc()): ?>
+                <tr>
+                    <td><?= $count++ ?></td>
+                    <td><?= htmlspecialchars($row['s_name']) ?></td>
+                    <td><?= htmlspecialchars($row['email']) ?></td>
+                    <td><?= htmlspecialchars($row['phone_no']) ?></td>
+                    <td><?= htmlspecialchars($row['applied_at']) ?></td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
 <?php else: ?>
     <p style="text-align: center;">No applicants found for this internship.</p>
 <?php endif; ?>
