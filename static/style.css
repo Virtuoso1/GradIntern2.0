@@ -51,6 +51,63 @@ ul {
   display: flex;
   gap: 0.5rem;
 }
+table {
+  width: 95%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+th {
+  background-color: #4B7BEC;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+  background-color: #f4f6fa;
+}
+
+tr:hover {
+  background-color: #eef1f7;
+}
+
+td {
+  font-size: 15px;
+  color: #333;
+}
+
+.btn-danger {
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 30px;
+  color: #2c3e50;
+  font-size: 26px;
+}
 
 .btn {
   padding: 0.5rem 1rem;

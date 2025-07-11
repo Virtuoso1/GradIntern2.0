@@ -11,8 +11,16 @@ $result = $conn->query("SELECT id, r_name, email, company_name, company_website 
 
 <!DOCTYPE html>
 <html>
-<head><title>Recruiters</title><link rel="stylesheet" href="../style.css"></head>
+<head><style>
+  a:hover{
+    color:blue;
+  }
+</style><title>Recruiters</title><link rel="stylesheet" href="../static/style.css"></head>
 <body>
+   <header class="header">
+    <div class="logo">GradIntern</div>
+    <a class='btn' href="logout.php">Logout</a>
+  </header>
   <h2>Registered Recruiters</h2>
   <table border="1">
     <tr><th>Name</th><th>Email</th><th>Company</th><th>Website</th></tr>

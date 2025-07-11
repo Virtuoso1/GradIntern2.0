@@ -11,8 +11,12 @@ $result = $conn->query("SELECT id, s_name, email, university, phone_no FROM stud
 
 <!DOCTYPE html>
 <html>
-<head><title>Students</title><link rel="stylesheet" href="../style.css"></head>
+<head><title>Students</title><link rel="stylesheet" href="../static/style.css"></head>
 <body>
+   <header class="header">
+    <div class="logo">GradIntern</div>
+    <a class='btn' href="logout.php">Logout</a>
+  </header>
   <h2>Registered Students</h2>
   <table border="1">
     <tr><th>Name</th><th>Email</th><th>University</th><th>Phone</th></tr>

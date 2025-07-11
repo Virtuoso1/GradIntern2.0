@@ -16,7 +16,7 @@ $result = $conn->query("
 
 <!DOCTYPE html>
 <html>
-<head><title>Applications</title><link rel="stylesheet" href="../style.css"></head>
+<head><title>Applications</title><link rel="stylesheet" href="../static/style.css"></head>
 <body>
   <h2>Internship Applications</h2>
   <table border="1">

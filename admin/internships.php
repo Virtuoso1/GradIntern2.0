@@ -15,8 +15,12 @@ $result = $conn->query("
 
 <!DOCTYPE html>
 <html>
-<head><title>Internships</title><link rel="stylesheet" href="../style.css"></head>
+<head><title>Internships</title><link rel="stylesheet" href="../static/style.css"></head>
 <body>
+   <header class="header">
+    <div class="logo">GradIntern</div>
+    <a class='btn' href="logout.php">Logout</a>
+  </header>
   <h2>Internship Listings</h2>
   <table border="1">
 <tr><th>Title</th><th>Location</th><th>Stipend</th><th>Posted By</th><th>Action</th></tr>

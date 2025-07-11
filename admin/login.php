@@ -26,15 +26,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 <head>
   <title>Admin Login</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
+    <header class="header">
+    <div class="logo">GradIntern</div>
+  </header>
+    <section class="form-section">
   <h2>Admin Login</h2>
   <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
-  <form method="POST">
+  <form class="form" method="POST">
     <input type="text" name="username" placeholder="Username" required /><br/>
     <input type="password" name="password" placeholder="Password" required /><br/>
-    <button type="submit">Login</button>
+    <button type="submit" class="btn btn-secondary">Login</button>
   </form>
+</section>
 </body>
 </html>
