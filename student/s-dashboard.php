@@ -10,6 +10,9 @@ if (!isset($_SESSION['student_id'])) {
 <head>
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="../static/style.css">
+      <link rel="stylesheet" href="../static/style.css">
+
+   
 </head>
 <body>
   <!-- HEADER -->
