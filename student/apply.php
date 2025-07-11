@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $conn->close();
         exit;
     }
+    
     $check->close();
 
     // Insert application
