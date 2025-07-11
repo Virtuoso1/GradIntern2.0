@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../dbconn.php';
+include '.../dbconn.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['recruiter_id'])) {
     $listing_id = $_POST['listing_id'];

@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<p>Your application has been submitted successfully.</p>";
         echo "<a href='s-dashboard.php' class='btn btn-secondary'>Back to Listings</a>";
     } else {
-        echo "Error submitting application: " . $stmt->error;
+        echo "Error submitting the application: " . $stmt->error;
     }
 
     $stmt->close();
