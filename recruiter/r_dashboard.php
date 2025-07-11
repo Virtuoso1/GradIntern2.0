@@ -34,7 +34,7 @@ $result = $stmt->get_result();
   <main class="listings-page">
     <h2>My Internship Listings</h2>
     <a href="new-listing.php">
-    <button>Create New Listing</button>
+    <button class="btn">Create New Listing</button>
     </a>
     <div class="card-grid">
       <?php while ($row = $result->fetch_assoc()): ?>

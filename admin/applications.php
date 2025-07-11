@@ -18,6 +18,10 @@ $result = $conn->query("
 <html>
 <head><title>Applications</title><link rel="stylesheet" href="../static/style.css"></head>
 <body>
+  <header class="header">
+    <div class="logo">GradIntern</div>
+    <a class='btn' href="logout.php">Logout</a>
+  </header>
   <h2>Internship Applications</h2>
   <table border="1">
     <tr><th>Student</th><th>Internship</th><th>Status</th><th>Applied At</th></tr>
