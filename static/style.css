@@ -422,3 +422,468 @@ h2 {
   font-weight: bold;
   text-align: center;
 }
+
+/* Enhanced header layout */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004080;
+  padding: 1rem 2rem;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.welcome {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+/* Improve internship cards */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.internship-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: 300px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.internship-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.internship-card h3 {
+  color: #004080;
+  margin-bottom: 0.5rem;
+}
+
+.internship-card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Improve general body color */
+body {
+  background-color: #f1f5f9;
+}
+
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004080;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.welcome {
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: #004080;
+  border: 1px solid #004080;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #004080;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #005fa3;
+}
+
+/* Main Section */
+.dashboard-main {
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+}
+
+/* Cards */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.internship-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.internship-location {
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Empty state */
+.no-internships {
+  text-align: center;
+  margin-top: 2rem;
+  font-style: italic;
+  color: gray;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .card-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* === RECRUITER DASHBOARD STYLING === */
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004080;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.welcome {
+  font-size: 1rem;
+  font-style: italic;
+  color: #cde;
+}
+
+.header-right .btn {
+  margin-left: 1rem;
+}
+
+/* Main Section */
+.dashboard-main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #004080;
+}
+
+/* Cards */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  width: 280px;
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background-color: #f0f8ff;
+}
+
+.internship-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #004080;
+}
+
+.internship-location {
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.no-internships {
+  text-align: center;
+  color: #777;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.6rem 1.2rem;
+  background-color: white;
+  color: #004080;
+  border: 1px solid #004080;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #004080;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #005fa3;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  margin-top: 0.5rem;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #004080;
+  color: white;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .header-right {
+    margin-top: 0.5rem;
+  }
+}
+
+/* === Create Internship Form Styling === */
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 3rem auto;
+  background-color: white;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #004080;
+  font-size: 1.8rem;
+}
+
+form p {
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #004080;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button.btn:hover {
+  background-color: #0066cc;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+  }
+
+  button.btn {
+    font-size: 0.95rem;
+  }
+}
+
