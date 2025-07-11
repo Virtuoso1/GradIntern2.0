@@ -7,7 +7,7 @@ $result = $conn->query("SELECT * FROM internship");
 <html>
 <head>
     <title>Student Dashboard</title>
-      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../static/style.css">
 
    
 </head>
